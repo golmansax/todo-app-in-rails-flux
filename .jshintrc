@@ -47,7 +47,7 @@
   "evil"          : false,     // true: Tolerate use of `eval` and `new Function()`
   "expr"          : false,     // true: Tolerate `ExpressionStatement` as Programs
   "funcscope"     : false,     // true: Tolerate defining variables inside control statements"
-  "globalstrict"  : false,     // true: Allow global "use strict" (also enables 'strict')
+  "globalstrict"  : true,      // true: Allow global "use strict" (also enables 'strict')
   "iterator"      : false,     // true: Tolerate using the `__iterator__` property
   "lastsemic"     : false,     // true: Tolerate omitting a semicolon for the last statement of a 1-line block
   "laxbreak"      : false,     // true: Tolerate possibly unsafe line breakings
@@ -86,16 +86,8 @@
   // Custom Globals
   //   NOTE: Let's explicitly list out the globals we use
   "globals"       : {
-    "$"           : true,     // jQuery
-    "_"           : true,     // Underscore
-    "Backbone"    : true,     // Backbone
-    "routie"      : true,     // Frontend routing
-    "Chk"         : true,     // Global object
-    "window"      : true,     // Only expose this browser global
-    "isMobile"    : true,     // Mobile detection library
-    "Papa"        : true,     // Papa Parse
-    "moment"      : true,     // moment (Date) library
-    "d3"          : true,     // d3 graph library
-    "React"       : true      // React
+    "module"      : true,
+    "require"     : true,
+    "window"      : true
   }
 }

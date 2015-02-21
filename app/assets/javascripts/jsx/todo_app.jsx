@@ -1,6 +1,5 @@
 'use strict';
 
-var _ = require('underscore');
 var React = require('react');
 var TodoList = require('./todo_list');
 var TodoOptionsMenu = require('./todo_options_menu');
