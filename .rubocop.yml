@@ -1,0 +1,29 @@
+AllCops:
+  Include:
+    - Guardfile
+    - config.ru
+    - Rakefile
+    - !ruby/regexp /.*\.rake/
+  Exclude:
+    - db/schema.rb
+    - node_modules/**/*
+    - '**/bower_components/**/*'
+    - vendor/**/*
+  RunRailsCops: true
+
+Documentation:
+  Enabled: false
+
+TrailingComma:
+  EnforcedStyleForMultiline: comma
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/*
+
+Output:
+  Exclude:
+    - config/unicorn.rb
+
+HasAndBelongsToMany:
+  Enabled: false

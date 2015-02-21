@@ -31,6 +31,8 @@ module TodoApp
 
     config.react.addons = true
 
+    config.browserify_rails.commandline_options = '-t reactify --extension=".js"'
+
   end
 
 end
