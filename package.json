@@ -8,6 +8,7 @@
     "backbone": "latest",
     "es5-shim": "latest",
     "moment": "latest",
+    "react": "~> 0.12",
     "underscore": "latest"
   },
   "devDependencies": {

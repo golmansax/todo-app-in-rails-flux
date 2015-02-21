@@ -2,10 +2,6 @@
 
 var React = require('react');
 var moment = require('moment');
-var Button = require('react-bootstrap').Button;
-var ListGroupItem = require('react-bootstrap').ListGroupItem;
-var Grid = require('react-bootstrap').Grid;
-var Col = require('react-bootstrap').Col;
 var TodoStore = require('../stores/todo_store');
 
 var TodoListItem = React.createClass({
@@ -45,33 +41,29 @@ var TodoListItem = React.createClass({
 
   render: function () {
     return (
-      <ListGroupItem>
-        <Grid>
-          <Col md={9}>
+      <li className='list-group-item'>
+        <div className='row'>
+          <div className='col-md-9'>
             <h3 className='todo-list-item-name'>{this.props.name}</h3>
             {this._renderDate()}
-          </Col>
-          <Col md={3}>
-            <Button
-              bsSize='large'
-              bsStyle='primary'
-              block
+          </div>
+          <div className='col-md-3'>
+            <button
+              className='btn btn-lg btn-primary btn-block'
               onClick={this._onMarkCompleteClick}
               disabled={!!this.props.completedDate}
             >
               Mark Done
-            </Button>
-            <Button
-              bsSize='large'
-              bsStyle='default'
-              block
+            </button>
+            <button
+              className='btn btn-lg btn-default btn-block'
               onClick={this._onDestroyClick}
             >
               Remove
-            </Button>
-          </Col>
-        </Grid>
-      </ListGroupItem>
+            </button>
+          </div>
+        </div>
+      </li>
     );
   }
 });

@@ -2,9 +2,6 @@
 
 var React = require('react');
 var moment = require('moment');
-var Button = require('react-bootstrap').Button;
-var Grid = require('react-bootstrap').Grid;
-var Col = require('react-bootstrap').Col;
 var TodoStore = require('../stores/todo_store');
 
 var TodoOptionsMenu = React.createClass({
@@ -14,9 +11,9 @@ var TodoOptionsMenu = React.createClass({
 
   render: function () {
     return (
-      <Grid>
+      <div className='row'>
         <h4>
-          <Col md={9}>
+          <div className='col-md-9'>
             <label>
               <input
                 type='checkbox'
@@ -25,19 +22,17 @@ var TodoOptionsMenu = React.createClass({
               />
               Show Completed
             </label>
-          </Col>
+          </div>
         </h4>
-        <Col md={3}>
-          <Button
-            block
-            bsSize='large'
-            bsStyle='primary'
+        <div className='col-md-3'>
+          <button
+            className='btn btn-block btn-lg btn-primary'
             onClick={this._onAddClick}
           >
             Add Todo
-          </Button>
-        </Col>
-      </Grid>
+          </button>
+        </div>
+      </div>
     );
   }
 });
