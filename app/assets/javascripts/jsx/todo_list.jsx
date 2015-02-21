@@ -13,7 +13,6 @@ var TodoList = React.createClass({
   },
 
   render: function () {
-    console.log(this.props.todos);
     return (
       <ul className='list-group'>
         {this.props.todos.map(this._renderTodo)}

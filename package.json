@@ -18,7 +18,7 @@
     "istanbul": "0.3.2",
     "jsxhint": "0.9.0",
     "jscs": "1.10.0",
-    "reactify": "~> 0.14.0"
+    "reactify": "latest"
   },
   "repository": {
     "type" : "git",
