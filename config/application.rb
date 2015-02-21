@@ -7,9 +7,7 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module TodoApp
-
   class Application < Rails::Application
-
     # Settings in config/environments/* take precedence over those specified
     # here.  Application configuration should go into files in
     # config/initializers
@@ -31,8 +29,7 @@ module TodoApp
 
     config.react.addons = true
 
-    config.browserify_rails.commandline_options = '-t reactify --extension=".jsx"'
-
+    browserify_options = '-t reactify --extension=".jsx"'
+    config.browserify_rails.commandline_options = browserify_options
   end
-
 end
