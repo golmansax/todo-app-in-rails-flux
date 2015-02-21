@@ -1,0 +1,17 @@
+sudo: false
+language: ruby
+rvm:
+- 2.1.5
+cache:
+  bundler: true
+  directories:
+  - node_modules
+before_install:
+- npm install
+script:
+- bundle exec travis lint --skip-completion-check
+- bundle exec rubocop -D
+- bundle exec haml-lint app/views
+- bundle exec scss-lint app/assets/stylesheets
+- ./node_modules/.bin/jscs --esprima=esprima-fb app/assets/javascripts/
+- ./node_modules/.bin/jsxhint --verbose app/assets/javascripts/

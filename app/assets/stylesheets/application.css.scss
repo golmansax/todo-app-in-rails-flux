@@ -1,0 +1,14 @@
+$font-family-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$font-family-headers: 'Oxygen', $font-family-sans-serif;
+
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-headers;
+}

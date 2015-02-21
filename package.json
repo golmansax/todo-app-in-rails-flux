@@ -1,0 +1,17 @@
+{
+  "name": "todo-app-in-rails-flux",
+  "engines": {
+    "npm": "2.1.x",
+    "node": "0.10.x"
+  },
+  "devDependencies": {
+    "esprima-fb": "latest",
+    "istanbul": "0.3.2",
+    "jsxhint": "0.9.0",
+    "jscs": "1.10.0"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/golmansax/todo-app-in-rails-flux.git"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "excludeFiles": ["**/tmp/**"],
+  "fileExtensions": [".js", ".jsx"],
+
+  "preset": "google",
+
+  "validateIndentation": null,
+
+  "requireParenthesesAroundIIFE": true,
+
+  "requireCamelCaseOrUpperCaseIdentifiers": null,
+
+  "disallowSpacesInAnonymousFunctionExpression": null,
+
+  "disallowSpacesInsideObjectBrackets": null,
+
+  "requireSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningRoundBrace": true
+  },
+
+  "disallowSpacesInNamedFunctionExpression": {
+    "beforeOpeningRoundBrace": true
+  },
+
+  "requireSpacesInFunctionDeclaration": {
+    "beforeOpeningCurlyBrace": true
+  },
+
+  "disallowSpacesInFunctionDeclaration": {
+    "beforeOpeningRoundBrace": true
+  },
+
+  "requireBlocksOnNewline": 1,
+
+  "requireSpacesInsideObjectBrackets": "allButNested",
+
+  "disallowQuotedKeysInObjects": "allButReserved",
+
+  "disallowSpaceAfterObjectKeys": true,
+
+  "requireCommaBeforeLineBreak": true,
+
+  "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
+
+  "validateLineBreaks": "LF",
+
+  "disallowKeywordsOnNewLine": ["else"],
+
+  "safeContextKeyword": ["self"],
+
+  "disallowYodaConditions": true
+
+}
