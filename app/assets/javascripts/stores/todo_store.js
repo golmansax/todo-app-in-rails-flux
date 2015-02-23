@@ -12,10 +12,4 @@ TodoStore.load([
   { name: 'Start a company', dueDate: moment('2020-01-01'), id: 5 }
 ]);
 
-TodoStore.Actions = {
-  destroy: TodoStore.destroy.bind(TodoStore),
-  update: TodoStore.update.bind(TodoStore),
-  create: TodoStore.create.bind(TodoStore)
-};
-
 module.exports = TodoStore;

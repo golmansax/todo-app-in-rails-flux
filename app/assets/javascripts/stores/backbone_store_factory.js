@@ -28,6 +28,12 @@ _(BackboneStoreFactory.prototype).extend({
     }
 
     this._storage = new Collection();
+
+    _(this.Actions).each(this._bindAction.bind(this));
+  },
+
+  _bindAction: function (action, name) {
+    this.Actions[name] = action.bind(this);
   },
 
   load: function (models) {
@@ -43,31 +49,33 @@ _(BackboneStoreFactory.prototype).extend({
     return model.toJSON();
   },
 
-  update: function (id, data) {
-    this._storage.get(id).set(data);
-  },
-
-  destroy: function (id) {
-    this._storage.remove(id);
-  },
-
-  create: function (data) {
-    var model = new this.model(data);
-    var idAttr = model.idAttr || 'id';
-
-    if (!model.get(idAttr)) {
-      model.set(idAttr, model.cid);
-    }
-
-    this._storage.add(model);
-  },
-
   addChangeListener: function (callback) {
     this._storage.on(EVENTS, callback);
   },
 
   removeChangeListener: function (callback) {
     this._storage.off(EVENTS, callback);
+  },
+
+  Actions: {
+    update: function (id, data) {
+      this._storage.get(id).set(data);
+    },
+
+    destroy: function (id) {
+      this._storage.remove(id);
+    },
+
+    create: function (data) {
+      var model = new this.model(data);
+      var idAttr = model.idAttr || 'id';
+
+      if (!model.get(idAttr)) {
+        model.set(idAttr, model.cid);
+      }
+
+      this._storage.add(model);
+    }
   }
 });
 
