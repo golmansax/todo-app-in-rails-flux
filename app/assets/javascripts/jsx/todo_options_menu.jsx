@@ -2,11 +2,12 @@
 
 var React = require('react');
 var moment = require('moment');
-var TodoStore = require('../stores/todo_store');
+var TodoActions = require('../stores/todo_store').Actions;
 
 var TodoOptionsMenu = React.createClass({
   _onAddClick: function () {
-    TodoStore.create({ name: 'Eat Groceries', dueDate: moment() });
+    TodoActions.create({ name: 'Eat Groceries', dueDate: moment() });
+    alert('Hello!');
   },
 
   render: function () {
