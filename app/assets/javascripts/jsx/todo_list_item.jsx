@@ -3,8 +3,11 @@
 var React = require('react');
 var moment = require('moment');
 var TodoActions = require('../stores/todo_store').Actions;
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var TodoListItem = React.createClass({
+  mixins: [PureRenderMixin],
+
   propTypes: {
     id: React.PropTypes.oneOfType([
       React.PropTypes.number,

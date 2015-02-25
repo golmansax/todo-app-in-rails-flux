@@ -3,8 +3,11 @@
 var React = require('react');
 var moment = require('moment');
 var TodoActions = require('../stores/todo_store').Actions;
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var TodoOptionsMenu = React.createClass({
+  mixins: [PureRenderMixin],
+
   _onAddClick: function () {
     TodoActions.create({ name: 'Eat Groceries', dueDate: moment() });
     alert('Hello!');

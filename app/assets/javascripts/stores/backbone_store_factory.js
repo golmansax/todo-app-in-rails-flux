@@ -8,7 +8,7 @@ var BackboneStoreFactory = function () {
 };
 BackboneStoreFactory.extend = Backbone.Collection.extend;
 
-var EVENTS = 'add remove change reset sort';
+var EVENTS = 'add remove change reset';
 
 _(BackboneStoreFactory.prototype).extend({
   collection: null,

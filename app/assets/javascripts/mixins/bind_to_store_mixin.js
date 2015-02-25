@@ -22,6 +22,10 @@ var BindToStoreMixin = function (Store, getStateAttr) {
     componentWillUnmount: function () {
       Store.removeChangeListener(this._changeListeners[Store]);
       this._changeListeners[Store] = null;
+    },
+
+    componentWillReceiveProps: function () {
+      this._updateStateFromStore.bind(this, getStateAttr);
     }
   };
 };

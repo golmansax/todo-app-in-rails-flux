@@ -2,8 +2,11 @@
 
 var React = require('react');
 var TodoListItem = require('./todo_list_item');
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var TodoList = React.createClass({
+  mixins: [PureRenderMixin],
+
   propTypes: {
     todos: React.PropTypes.array.isRequired
   },
