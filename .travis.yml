@@ -18,6 +18,6 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: ERr28OXoNvokbiM9EccyPA2GDC2A0Jd6Z3YBXrFPW9FFd+IhTCG47T8ZBqEh+woMXfCsDSnrtgA6crlw4NauTED2lkabhjg/z44ggcOKQ6BVejJ+EyfDTM2SCNcsf+GxU5+kxB0o+KM9Qq7Usk3oOLwCJxCdOcekIl8f8nWgoCM=
+    secure: TWB+vmlxnr8JHk8YXRrWTSyzpSA+GxsfGEnb26DpNcwseZu/4ph+Drl/T5k9AFbCBmDQPNkVBqd7gwyVhU+Jj2RiIw/uiCOvP7XBt5b+876NrGYW1AV3UhL744sGgCzDqNI2zw0y6uzk8MsPxwBNEEXMrWQPVdsTh/n5Xlny3zM=
   app:
     secure: FPE3iQgmDjOpV/NZcY4Cs0Z8r0rfNhkY1Fckclq0t/DtLklh8w8kV7tvnmlk14kJGJviNc2QRzilPFIzCD/SpquwBQu9SMhLOL4ln8Q7Xhi6gMjdpkclaOtY7zUG4sqjCqDSLvqJNvEp9IvZU3zG6+a6BMfteNLS5vJVU/NsC9Y=
