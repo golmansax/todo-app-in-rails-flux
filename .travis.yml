@@ -15,3 +15,9 @@ script:
 - bundle exec rake scss_lint
 - bundle exec rake jscs
 - bundle exec rake jshint
+deploy:
+  provider: heroku
+  api_key:
+    secure: ERr28OXoNvokbiM9EccyPA2GDC2A0Jd6Z3YBXrFPW9FFd+IhTCG47T8ZBqEh+woMXfCsDSnrtgA6crlw4NauTED2lkabhjg/z44ggcOKQ6BVejJ+EyfDTM2SCNcsf+GxU5+kxB0o+KM9Qq7Usk3oOLwCJxCdOcekIl8f8nWgoCM=
+  app:
+    secure: FPE3iQgmDjOpV/NZcY4Cs0Z8r0rfNhkY1Fckclq0t/DtLklh8w8kV7tvnmlk14kJGJviNc2QRzilPFIzCD/SpquwBQu9SMhLOL4ln8Q7Xhi6gMjdpkclaOtY7zUG4sqjCqDSLvqJNvEp9IvZU3zG6+a6BMfteNLS5vJVU/NsC9Y=
