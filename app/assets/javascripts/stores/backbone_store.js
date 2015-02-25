@@ -3,14 +3,14 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
 
-var BackboneStoreFactory = function () {
+var BackboneStore = function () {
   this.initialize();
 };
-BackboneStoreFactory.extend = Backbone.Collection.extend;
+BackboneStore.extend = Backbone.Collection.extend;
 
 var EVENTS = 'add remove change reset';
 
-_(BackboneStoreFactory.prototype).extend({
+_(BackboneStore.prototype).extend({
   collection: null,
 
   model: Backbone.Model,
@@ -34,10 +34,6 @@ _(BackboneStoreFactory.prototype).extend({
 
   _bindAction: function (action, name) {
     this.Actions[name] = action.bind(this);
-  },
-
-  load: function (models) {
-    this._storage.reset(models);
   },
 
   getAll: function () {
@@ -75,8 +71,12 @@ _(BackboneStoreFactory.prototype).extend({
       }
 
       this._storage.add(model);
+    },
+
+    load: function (models) {
+      this._storage.reset(models);
     }
   }
 });
 
-module.exports = BackboneStoreFactory;
+module.exports = BackboneStore;

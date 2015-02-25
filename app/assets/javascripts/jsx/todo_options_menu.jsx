@@ -10,7 +10,7 @@ var TodoOptionsMenu = React.createClass({
 
   _onAddClick: function () {
     TodoActions.create({ name: 'Eat Groceries', dueDate: moment() });
-    alert('Hello!');
+    window.alert('Todo created!');
   },
 
   render: function () {
