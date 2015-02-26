@@ -16,11 +16,13 @@ var TodoListItem = React.createClass({
     name: React.PropTypes.string.isRequired
   },
 
-  _onMarkCompleteClick: function () {
+  _onMarkCompleteClick: function (event) {
+    event.preventDefault();
     TodoActions.update(this.props.id, { completedDate: moment() });
   },
 
-  _onDestroyClick: function () {
+  _onDestroyClick: function (event) {
+    event.preventDefault();
     TodoActions.destroy(this.props.id);
   },
 
@@ -44,7 +46,7 @@ var TodoListItem = React.createClass({
 
   render: function () {
     return (
-      <li className='list-group-item'>
+      <a href='#' className='list-group-item'>
         <div className='row'>
           <div className='col-md-9'>
             <h3 className='todo-list-item-name'>{this.props.name}</h3>
@@ -66,7 +68,7 @@ var TodoListItem = React.createClass({
             </button>
           </div>
         </div>
-      </li>
+      </a>
     );
   }
 });
