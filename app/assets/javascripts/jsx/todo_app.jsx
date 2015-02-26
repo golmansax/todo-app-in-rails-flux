@@ -16,6 +16,10 @@ var TodoApp = React.createClass({
     };
   },
 
+  componentWillMount: function () {
+    TodoStore.Actions.fetchAll();
+  },
+
   render: function () {
     return (
       <div>

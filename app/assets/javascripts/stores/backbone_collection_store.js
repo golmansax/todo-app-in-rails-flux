@@ -36,6 +36,10 @@ _(BackboneCollectionStore.prototype).extend({
     this.Actions[name] = action.bind(this);
   },
 
+  _triggerChange: function () {
+    this._storage.trigger('change');
+  },
+
   getAll: function () {
     return this._storage.toJSON();
   },
@@ -75,6 +79,14 @@ _(BackboneCollectionStore.prototype).extend({
 
     load: function (models) {
       this._storage.reset(models);
+    },
+
+    fetchAll: function () {
+      this._storage.fetch({
+        parse: true,
+        silent: true,
+        success: this._triggerChange.bind(this)
+      });
     }
   }
 });

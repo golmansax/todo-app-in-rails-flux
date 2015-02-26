@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "backbone": "latest",
+    "backbone.nativeajax": "latest",
     "es5-shim": "latest",
     "moment": "latest",
     "react": "~> 0.12",
