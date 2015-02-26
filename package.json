@@ -9,6 +9,7 @@
     "es5-shim": "latest",
     "moment": "latest",
     "react": "~> 0.12",
+    "react-router": "latest",
     "underscore": "latest"
   },
   "devDependencies": {

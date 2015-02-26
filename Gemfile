@@ -15,6 +15,6 @@ group :development, :test do
   gem 'haml-lint'
   gem 'rubocop'
   gem 'scss-lint'
-  gem 'travis'
+  gem 'travis', require: false
   gem 'web-console', '~> 2.0'
 end

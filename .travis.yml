@@ -9,7 +9,7 @@ cache:
 before_install:
 - npm install
 script:
-- bundle exec travis lint --skip-completion-check
+- bundle exec rake travis_lint
 - bundle exec rubocop -D
 - bundle exec rake haml_lint
 - bundle exec rake scss_lint
