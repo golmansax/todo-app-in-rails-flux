@@ -1,6 +1,5 @@
 'use strict';
 
-var moment = require('moment');
 var BackboneCollectionStore = require('./backbone_collection_store');
 var Todos = require('../backbone/todos');
 
