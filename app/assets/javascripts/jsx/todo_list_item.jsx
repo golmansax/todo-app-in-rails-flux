@@ -22,6 +22,11 @@ var TodoListItem = React.createClass({
     TodoActions.update(this.props.id, { completedDate: moment() });
   },
 
+  _onMarkIncompleteClick: function (event) {
+    event.preventDefault();
+    TodoActions.update(this.props.id, { completedDate: null });
+  },
+
   _onDestroyClick: function (event) {
     event.preventDefault();
     TodoActions.destroy(this.props.id);
@@ -35,12 +40,40 @@ var TodoListItem = React.createClass({
           {this.props.completedDate.calendar()}
         </p>
       );
-    } else {
+    } else if (this.props.dueDate) {
       return (
         <p>
           <strong>Due date: </strong>
           {this.props.dueDate.calendar()}
         </p>
+      );
+    } else {
+      return (
+        <p>
+          <strong>No due date</strong>
+        </p>
+      );
+    }
+  },
+
+  _renderActionButton: function () {
+    if (this.props.completedDate) {
+      return (
+        <button
+          className='btn btn-lg btn-default btn-block'
+          onClick={this._onMarkIncompleteClick}
+        >
+          Not Done Yet
+        </button>
+      );
+    } else {
+      return (
+        <button
+          className='btn btn-lg btn-primary btn-block'
+          onClick={this._onMarkCompleteClick}
+        >
+          Mark Done
+        </button>
       );
     }
   },
@@ -58,13 +91,7 @@ var TodoListItem = React.createClass({
             {this._renderDate()}
           </div>
           <div className='col-md-3'>
-            <button
-              className='btn btn-lg btn-primary btn-block'
-              onClick={this._onMarkCompleteClick}
-              disabled={!!this.props.completedDate}
-            >
-              Mark Done
-            </button>
+            {this._renderActionButton()}
             <button
               className='btn btn-lg btn-default btn-block'
               onClick={this._onDestroyClick}
