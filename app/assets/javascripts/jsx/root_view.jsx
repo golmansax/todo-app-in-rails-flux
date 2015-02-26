@@ -9,7 +9,7 @@ var RootView = React.createClass({
       <div className='container'>
         <h1>My Todo List!</h1>
         <br />
-        <RouteHandler />
+        <RouteHandler {...this.props} />
       </div>
     );
   }

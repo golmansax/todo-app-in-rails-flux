@@ -9,7 +9,7 @@ var routes = require('./routes');
 
 var containerEl = window.document.getElementById('react-container');
 if (containerEl) {
-  Router.run(routes, Router.HistoryLocation, function (Handler) {
-    React.render(<Handler />, containerEl);
+  Router.run(routes, Router.HistoryLocation, function (Handler, state) {
+    React.render(<Handler {...state.params} />, containerEl);
   });
 }

@@ -11,7 +11,7 @@ var TodoRoute = require('./jsx/todo_route');
 var routes = (
   <Route handler={RootView} path='/'>
     <DefaultRoute handler={TodoApp} />
-    <Route name='todo' path=':id' handler={TodoRoute} />
+    <Route name='todo' path='/todos/:id' handler={TodoRoute} />
   </Route>
 );
 
