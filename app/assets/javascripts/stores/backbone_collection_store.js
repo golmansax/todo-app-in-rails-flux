@@ -3,14 +3,14 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
 
-var BackboneStore = function () {
+var BackboneCollectionStore = function () {
   this.initialize();
 };
-BackboneStore.extend = Backbone.Collection.extend;
+BackboneCollectionStore.extend = Backbone.Collection.extend;
 
 var EVENTS = 'add remove change reset';
 
-_(BackboneStore.prototype).extend({
+_(BackboneCollectionStore.prototype).extend({
   collection: null,
 
   model: Backbone.Model,
@@ -79,4 +79,4 @@ _(BackboneStore.prototype).extend({
   }
 });
 
-module.exports = BackboneStore;
+module.exports = BackboneCollectionStore;

@@ -1,9 +1,9 @@
 'use strict';
 
 var moment = require('moment');
-var BackboneStore = require('./backbone_store');
+var BackboneCollectionStore = require('./backbone_collection_store');
 
-var TodoStore = new BackboneStore();
+var TodoStore = new BackboneCollectionStore();
 
 TodoStore.Actions.load([
   { name: 'Cut hair', dueDate: moment('2015-03-04'), id: 1 },
