@@ -1,19 +1,20 @@
 'use strict';
 
-var Backbone = require('backbone');
+var Model = require('backbone').Model;
+var Collection = require('backbone').Collection;
 var _ = require('underscore');
 
 var BackboneCollectionStore = function () {
   this.initialize();
 };
-BackboneCollectionStore.extend = Backbone.Collection.extend;
+BackboneCollectionStore.extend = Collection.extend;
 
 var EVENTS = 'add remove change reset';
 
 _(BackboneCollectionStore.prototype).extend({
   collection: null,
 
-  model: Backbone.Model,
+  model: Model,
 
   _storage: null,
 
@@ -24,20 +25,12 @@ _(BackboneCollectionStore.prototype).extend({
       Collection = this.collection;
       this.model = this.collection.model;
     } else {
-      Collection = Backbone.Collection.extend({ model: this.model });
+      Collection = Collection.extend({ model: this.model });
     }
 
     this._storage = new Collection();
 
     _(this.Actions).each(this._bindAction.bind(this));
-  },
-
-  _bindAction: function (action, name) {
-    this.Actions[name] = action.bind(this);
-  },
-
-  _triggerChange: function () {
-    this._storage.trigger('change');
   },
 
   getAll: function () {
@@ -88,6 +81,14 @@ _(BackboneCollectionStore.prototype).extend({
         success: this._triggerChange.bind(this)
       });
     }
+  },
+
+  _bindAction: function (action, name) {
+    this.Actions[name] = action.bind(this);
+  },
+
+  _triggerChange: function () {
+    this._storage.trigger('change');
   }
 });
 
