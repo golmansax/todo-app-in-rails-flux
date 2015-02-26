@@ -18,9 +18,14 @@ var TodoApp = React.createClass({
 
   componentWillMount: function () {
     TodoStore.Actions.fetchAll();
+    this.setState(this.getStateFromStore());
   },
 
   render: function () {
+    if (this.state.todos.isLoading) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div>
         <TodoOptionsMenu />

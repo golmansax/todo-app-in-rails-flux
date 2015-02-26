@@ -34,6 +34,12 @@ _(BackboneCollectionStore.prototype).extend({
   },
 
   getAll: function () {
+    if (this._fetchingAll) {
+      return {
+        isLoading: true
+      };
+    }
+
     return this._storage.toJSON();
   },
 
@@ -75,10 +81,14 @@ _(BackboneCollectionStore.prototype).extend({
     },
 
     fetchAll: function () {
+      this._fetchingAll = true;
       this._storage.fetch({
         parse: true,
         silent: true,
-        success: this._triggerChange.bind(this)
+        success: function () {
+          this._fetchingAll = false;
+          this._triggerChange();
+        }.bind(this)
       });
     }
   },
