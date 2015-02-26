@@ -2,8 +2,9 @@
 
 var React = require('react');
 var moment = require('moment');
-var TodoActions = require('../stores/todo_store').Actions;
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
+var Link = require('react-router').Link;
+var TodoActions = require('../stores/todo_store').Actions;
 
 var TodoListItem = React.createClass({
   mixins: [PureRenderMixin],
@@ -46,7 +47,11 @@ var TodoListItem = React.createClass({
 
   render: function () {
     return (
-      <a href='#' className='list-group-item'>
+      <Link
+        to='todo'
+        params={{ id: this.props.id }}
+        className='list-group-item'
+      >
         <div className='row'>
           <div className='col-md-9'>
             <h3 className='todo-list-item-name'>{this.props.name}</h3>
@@ -68,7 +73,7 @@ var TodoListItem = React.createClass({
             </button>
           </div>
         </div>
-      </a>
+      </Link>
     );
   }
 });

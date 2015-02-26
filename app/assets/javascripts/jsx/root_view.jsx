@@ -6,7 +6,11 @@ var RouteHandler = require('react-router').RouteHandler;
 var RootView = React.createClass({
   render: function () {
     return (
-      <RouteHandler />
+      <div className='container'>
+        <h1>My Todo List!</h1>
+        <br />
+        <RouteHandler />
+      </div>
     );
   }
 });

@@ -6,10 +6,12 @@ var Route = require('react-router').Route;
 var DefaultRoute = require('react-router').DefaultRoute;
 var RootView = require('./jsx/root_view');
 var TodoApp = require('./jsx/todo_app');
+var TodoRoute = require('./jsx/todo_route');
 
 var routes = (
   <Route handler={RootView} path='/'>
     <DefaultRoute handler={TodoApp} />
+    <Route name='todo' path=':id' handler={TodoRoute} />
   </Route>
 );
 
