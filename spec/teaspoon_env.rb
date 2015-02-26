@@ -32,5 +32,4 @@ Teaspoon.configure do |config|
     coverage.reports = ['text']
     add_coverage_thresholds!(coverage)
   end
-
 end
