@@ -1,0 +1,5 @@
+Todo.create!(name: 'Cut hair', due_date: Date.parse('2015-03-04'))
+Todo.create!(name: 'Wash car', due_date: Date.parse('2015-02-20'))
+Todo.create!(name: 'Laundry', due_date: Date.parse('2015-02-19'))
+Todo.create!(name: 'Buy groceries', completed_date: Date.parse('2015-02-10'))
+Todo.create!(name: 'Start a company', due_date: Date.parse('2020-01-01'))

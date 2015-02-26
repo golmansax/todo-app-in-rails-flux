@@ -1,0 +1,16 @@
+{
+  // See http://jshint.com/docs/ for more details
+  "extends": "../.jshintrc",
+
+  // Below are globals used only in the test environment
+  "globals"       : {
+    "after"       : true,
+    "afterEach"   : true,
+    "beforeEach"  : true,
+    "describe"    : true,
+    "expect"      : true,
+    "fixture"     : true,
+    "it"          : true,
+    "sinon"       : true
+  }
+}

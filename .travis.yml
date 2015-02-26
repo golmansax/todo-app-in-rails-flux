@@ -15,6 +15,7 @@ script:
 - bundle exec rake scss_lint
 - bundle exec rake jscs
 - bundle exec rake jshint
+- bundle exec rspec
 deploy:
   provider: heroku
   api_key:

@@ -2,8 +2,13 @@
 
 var moment = require('moment');
 var BackboneCollectionStore = require('./backbone_collection_store');
+var Todos = require('../backbone/todos');
 
-var TodoStore = new BackboneCollectionStore();
+var TodoStoreFactory = BackboneCollectionStore.extend({
+  collection: Todos
+});
+
+var TodoStore = new TodoStoreFactory();
 
 TodoStore.Actions.load([
   { name: 'Cut hair', dueDate: moment('2015-03-04'), id: 1 },
