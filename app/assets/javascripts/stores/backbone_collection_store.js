@@ -11,6 +11,10 @@ BackboneCollectionStore.extend = Collection.extend;
 
 var EVENTS = 'add remove change reset';
 
+function getClonedAttributes(model) {
+  return _(model.attributes).clone();
+}
+
 _(BackboneCollectionStore.prototype).extend({
   collection: null,
 
@@ -40,14 +44,12 @@ _(BackboneCollectionStore.prototype).extend({
       };
     }
 
-    return this._storage.map(function (model) {
-      return model.attributes;
-    });
+    return this._storage.map(getClonedAttributes);
   },
 
   get: function (id) {
     var model = this._storage.get(id);
-    return model.attributes;
+    return getClonedAttributes(model);
   },
 
   addChangeListener: function (callback) {
@@ -63,8 +65,12 @@ _(BackboneCollectionStore.prototype).extend({
       this._storage.get(id).set(data);
     },
 
-    destroy: function (id) {
+    remove: function (id) {
       this._storage.remove(id);
+    },
+
+    destroy: function (id) {
+      this._storage.get(id).destroy();
     },
 
     create: function (data) {

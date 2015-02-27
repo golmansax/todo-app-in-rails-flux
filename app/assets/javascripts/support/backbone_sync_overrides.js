@@ -4,16 +4,21 @@ var Backbone = require('backbone');
 var snakeize = require('snakeize');
 var originalSync = Backbone.sync;
 
-// TODO need a better name for this function
-function isModifier(method) {
+function needsCsrfToken(method) {
+  switch (method) {
+    case 'delete': return true;
+    default: return isSendingAttrs(method);
+  }
+}
+
+function isSendingAttrs(method) {
   switch (method) {
     case 'create':
     case 'update':
     case 'patch':
       return true;
 
-    default:
-      return false;
+    default: return false;
   }
 }
 
@@ -22,7 +27,7 @@ Backbone.sync = function (method, model, options) {
   options.beforeSend = function (xhr) {
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
-    if (isModifier(method)) {
+    if (isSendingAttrs(method) || method === 'delete') {
       var csrfTag = window.document.querySelector('meta[name=csrf-token]');
       xhr.setRequestHeader('X-CSRF-Token', csrfTag.content);
     }
@@ -32,7 +37,7 @@ Backbone.sync = function (method, model, options) {
     }
   };
 
-  if (model && isModifier(method)) {
+  if (model && isSendingAttrs(method)) {
     var attrs = options.attrs || model.toJSON(options);
     options.attrs = snakeize(attrs);
   }
