@@ -40,12 +40,14 @@ _(BackboneCollectionStore.prototype).extend({
       };
     }
 
-    return this._storage.toJSON();
+    return this._storage.map(function (model) {
+      return model.attributes;
+    });
   },
 
   get: function (id) {
     var model = this._storage.get(id);
-    return model.toJSON();
+    return model.attributes;
   },
 
   addChangeListener: function (callback) {

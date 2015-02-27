@@ -7,12 +7,19 @@ var _ = require('underscore');
 var Todo = Model.extend({
   urlRoot: '/todos',
 
-  parse: function (data) {
-    var todo = data;
+  toJSON: function () {
+    var data = Model.prototype.toJSON.apply(this, arguments);
 
-    return _(todo).extend({
-      dueDate: todo.dueDate ? moment(todo.dueDate) : null,
-      completedDate: todo.completedDate ? moment(todo.completedDate) : null
+    return _(data).extend({
+      dueDate: data.dueDate ? data.dueDate.unix() : null,
+      completedDate: data.completedDate ? data.completedDate.unix() : null
+    });
+  },
+
+  parse: function (data) {
+    return _(data).extend({
+      dueDate: data.dueDate ? moment(data.dueDate) : null,
+      completedDate: data.completedDate ? moment(data.completedDate) : null
     });
   }
 });

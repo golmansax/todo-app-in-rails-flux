@@ -5,12 +5,12 @@ var _ = require('underscore');
 var snakeize = require('snakeize');
 var originalSync = Backbone.sync;
 
+// TODO need a better name for this function
 function isModifier(method) {
   switch(method) {
     case 'create':
     case 'update':
     case 'patch':
-    case 'delete':
       return true;
 
     default:
@@ -33,10 +33,9 @@ Backbone.sync = function (method, model, options) {
     }
   };
 
-  if (model && !options.data && isModifier(method)) {
-    var data = model.toJSON();
-    options.data = JSON.stringify(snakeize(data));
-    console.log(options.data);
+  if (model && isModifier(method)) {
+    var attrs = options.attrs || model.toJSON(options);
+    options.attrs = snakeize(attrs);
   }
 
   return originalSync(method, model, options);
