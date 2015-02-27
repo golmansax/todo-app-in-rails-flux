@@ -7,20 +7,20 @@
   "dependencies": {
     "backbone": "latest",
     "backbone.nativeajax": "latest",
+    "browserify": "~> 6.3",
+    "browserify-incremental": "^1.4.0",
     "es5-shim": "latest",
     "moment": "latest",
     "react": "~> 0.12",
     "react-router": "latest",
+    "reactify": "latest"
     "underscore": "latest"
   },
   "devDependencies": {
-    "browserify": "~> 6.3",
-    "browserify-incremental": "^1.4.0",
     "esprima-fb": "latest",
     "istanbul": "0.3.2",
     "jsxhint": "0.9.0",
-    "jscs": "1.10.0",
-    "reactify": "latest"
+    "jscs": "1.10.0"
   },
   "repository": {
     "type" : "git",
