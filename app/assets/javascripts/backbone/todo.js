@@ -8,7 +8,7 @@ var Todo = Model.extend({
   urlRoot: '/todos',
 
   parse: function (data) {
-    var todo = data.todo || data;
+    var todo = data;
 
     return _(todo).extend({
       dueDate: todo.dueDate ? moment(todo.dueDate) : null,

@@ -20,11 +20,13 @@ var TodoListItem = React.createClass({
   _onMarkCompleteClick: function (event) {
     event.preventDefault();
     TodoActions.update(this.props.id, { completedDate: moment() });
+    TodoActions.save(this.props.id);
   },
 
   _onMarkIncompleteClick: function (event) {
     event.preventDefault();
     TodoActions.update(this.props.id, { completedDate: null });
+    TodoActions.save(this.props.id);
   },
 
   _onDestroyClick: function (event) {

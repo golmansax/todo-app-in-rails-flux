@@ -7,10 +7,26 @@ class TodosController < ApplicationController
   end
 
   def show
-    @todos = Todo.find(params[:id])
+    @todo = Todo.find(params[:id])
     respond_to do |format|
       format.json
       format.html { render template: 'pages/index' }
     end
   end
+
+  def update
+    @todo = Todo.find(params[:id])
+    @todo.update_attributes!(todo_params)
+
+    respond_to do |format|
+      format.json { render 'show' }
+    end
+  end
+
+private
+
+  def todo_params
+    params.slice(:name, :completed_date).permit!
+  end
+
 end

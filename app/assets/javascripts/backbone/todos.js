@@ -6,11 +6,7 @@ var Todo = require('./todo');
 var Todos = Collection.extend({
   model: Todo,
 
-  url: '/todos',
-
-  parse: function (data) {
-    return data.todos || data;
-  }
+  url: '/todos'
 });
 
 module.exports = Todos;

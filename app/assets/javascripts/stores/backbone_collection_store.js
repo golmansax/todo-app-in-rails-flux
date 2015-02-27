@@ -90,6 +90,11 @@ _(BackboneCollectionStore.prototype).extend({
           this._triggerChange();
         }.bind(this)
       });
+    },
+
+    save: function (id) {
+      var model = this._storage.get(id);
+      model.save();
     }
   },
 

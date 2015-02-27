@@ -1,3 +1,1 @@
-json.todo do
-  json.partial! 'todos/todo', todo: @todo
-end
+json.partial! 'todos/todo', todo: @todo
