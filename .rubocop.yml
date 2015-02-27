@@ -27,3 +27,6 @@ Output:
 
 HasAndBelongsToMany:
   Enabled: false
+
+AccessModifierIndentation:
+  EnforcedStyle: outdent

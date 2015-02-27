@@ -28,5 +28,4 @@ private
   def todo_params
     params.slice(:name, :completed_date).permit!
   end
-
 end

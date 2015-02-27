@@ -1,13 +1,12 @@
 'use strict';
 
 var Backbone = require('backbone');
-var _ = require('underscore');
 var snakeize = require('snakeize');
 var originalSync = Backbone.sync;
 
 // TODO need a better name for this function
 function isModifier(method) {
-  switch(method) {
+  switch (method) {
     case 'create':
     case 'update':
     case 'patch':
