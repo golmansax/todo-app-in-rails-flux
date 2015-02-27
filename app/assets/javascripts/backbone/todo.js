@@ -11,8 +11,8 @@ var Todo = Model.extend({
     var data = Model.prototype.toJSON.apply(this, arguments);
 
     return _(data).extend({
-      dueDate: data.dueDate ? data.dueDate.unix() : null,
-      completedDate: data.completedDate ? data.completedDate.unix() : null
+      dueDate: data.dueDate ? data.dueDate.format() : null,
+      completedDate: data.completedDate ? data.completedDate.format() : null
     });
   },
 
