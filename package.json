@@ -13,7 +13,7 @@
     "moment": "latest",
     "react": "~> 0.12",
     "react-router": "latest",
-    "reactify": "latest"
+    "reactify": "latest",
     "underscore": "latest"
   },
   "devDependencies": {
