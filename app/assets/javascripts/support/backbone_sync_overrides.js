@@ -27,7 +27,7 @@ Backbone.sync = function (method, model, options) {
   options.beforeSend = function (xhr) {
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
-    if (isSendingAttrs(method) || method === 'delete') {
+    if (needsCsrfToken(method)) {
       var csrfTag = window.document.querySelector('meta[name=csrf-token]');
       xhr.setRequestHeader('X-CSRF-Token', csrfTag.content);
     }

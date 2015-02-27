@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  resources :todos, only: [:index, :show, :update, :destroy]
+  resources :todos, only: [:index, :show, :create, :update, :destroy]
 end
