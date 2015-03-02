@@ -1,7 +1,7 @@
 Todo App
 ==
 
-[![Build Status](https://travis-ci.org/golmansax/chalk-todo.svg?branch=master)](https://travis-ci.org/golmansax/chalk-todo)
+[![Build Status](https://travis-ci.org/golmansax/todo-app-with-chk.svg?branch=master)](https://travis-ci.org/golmansax/todo-app-with-chk)
 
 A simple Todo app built with Rails and React.
 
