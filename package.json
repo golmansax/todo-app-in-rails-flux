@@ -5,6 +5,7 @@
     "node": "0.10.x"
   },
   "dependencies": {
+    "babelify": "latest",
     "backbone": "latest",
     "backbone.nativeajax": "latest",
     "browserify": "~> 6.3",

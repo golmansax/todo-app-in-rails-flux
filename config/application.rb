@@ -29,7 +29,7 @@ module TodoApp
 
     config.react.addons = true
 
-    browserify_options = '-t reactify --extension=".jsx"'
+    browserify_options = '-t reactify --extension=".jsx" -t babelify'
     config.browserify_rails.commandline_options = browserify_options
   end
 end
