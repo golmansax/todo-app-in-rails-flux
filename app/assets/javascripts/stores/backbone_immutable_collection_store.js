@@ -1,8 +1,5 @@
 'use strict';
 
-var Model = require('backbone').Model;
-var Collection = require('backbone').Collection;
-var _ = require('underscore');
 var Record = require('immutable').Record;
 var BackboneCollectionStore = require('./backbone_collection_store');
 

@@ -1,3 +1,5 @@
+'use strict';
+
 var Record = require('immutable').Record;
 
 var TodoRecord = Record({
