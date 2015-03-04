@@ -12,7 +12,7 @@ var TodoList = React.createClass({
   },
 
   _renderTodo: function (todo) {
-    return <TodoListItem {...todo} key={todo.id} />;
+    return <TodoListItem todo={todo} key={todo.id} />;
   },
 
   render: function () {

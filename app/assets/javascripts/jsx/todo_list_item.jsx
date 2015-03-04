@@ -5,48 +5,45 @@ var moment = require('moment');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Link = require('react-router').Link;
 var TodoActions = require('../stores/todo_store').Actions;
+var TodoRecord = require('../records/todo_record');
 
 var TodoListItem = React.createClass({
   mixins: [PureRenderMixin],
 
   propTypes: {
-    id: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.string
-    ]).isRequired,
-    name: React.PropTypes.string.isRequired
+    todo: React.PropTypes.instanceOf(TodoRecord)
   },
 
   _onMarkCompleteClick: function (event) {
     event.preventDefault();
-    TodoActions.update(this.props.id, { completedDate: moment() });
-    TodoActions.save(this.props.id);
+    TodoActions.update(this.props.todo.id, { completedDate: moment() });
+    TodoActions.save(this.props.todo.id);
   },
 
   _onMarkIncompleteClick: function (event) {
     event.preventDefault();
-    TodoActions.update(this.props.id, { completedDate: null });
-    TodoActions.save(this.props.id);
+    TodoActions.update(this.props.todo.id, { completedDate: null });
+    TodoActions.save(this.props.todo.id);
   },
 
   _onDestroyClick: function (event) {
     event.preventDefault();
-    TodoActions.destroy(this.props.id);
+    TodoActions.destroy(this.props.todo.id);
   },
 
   _renderDate: function () {
-    if (this.props.completedDate) {
+    if (this.props.todo.completedDate) {
       return (
         <p>
           <strong>Completed date: </strong>
-          {this.props.completedDate.calendar()}
+          {this.props.todo.completedDate.calendar()}
         </p>
       );
-    } else if (this.props.dueDate) {
+    } else if (this.props.todo.dueDate) {
       return (
         <p>
           <strong>Due date: </strong>
-          {this.props.dueDate.calendar()}
+          {this.props.todo.dueDate.calendar()}
         </p>
       );
     } else {
@@ -59,7 +56,7 @@ var TodoListItem = React.createClass({
   },
 
   _renderActionButton: function () {
-    if (this.props.completedDate) {
+    if (this.props.todo.completedDate) {
       return (
         <button
           className='btn btn-lg btn-default btn-block'
@@ -84,12 +81,12 @@ var TodoListItem = React.createClass({
     return (
       <Link
         to='todo'
-        params={{ id: this.props.id }}
+        params={{ id: this.props.todo.id }}
         className='list-group-item'
       >
         <div className='row'>
           <div className='col-md-9'>
-            <h3 className='todo-list-item-name'>{this.props.name}</h3>
+            <h3 className='todo-list-item-name'>{this.props.todo.name}</h3>
             {this._renderDate()}
           </div>
           <div className='col-md-3'>
