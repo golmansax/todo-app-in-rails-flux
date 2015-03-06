@@ -16,7 +16,9 @@ var TodoListItem = React.createClass({
 
   _onMarkCompleteClick: function (event) {
     event.preventDefault();
-    TodoActions.update(this.props.todo.id, { completedDate: moment() });
+    TodoActions.update(this.props.todo.id, {
+      completedDate: moment().format('YYYY-MM-DD')
+    });
     TodoActions.save(this.props.todo.id);
   },
 
@@ -36,14 +38,14 @@ var TodoListItem = React.createClass({
       return (
         <p>
           <strong>Completed date: </strong>
-          {this.props.todo.completedDate.calendar()}
+          {moment(this.props.todo.completedDate).calendar()}
         </p>
       );
     } else if (this.props.todo.dueDate) {
       return (
         <p>
           <strong>Due date: </strong>
-          {this.props.todo.dueDate.calendar()}
+          {moment(this.props.todo.dueDate).calendar()}
         </p>
       );
     } else {
