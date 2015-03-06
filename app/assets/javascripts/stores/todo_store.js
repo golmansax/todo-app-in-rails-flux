@@ -2,12 +2,12 @@
 
 var Store = require('./backbone_immutable_collection_store');
 var Todos = require('../backbone/todos');
-var TodoRecord = require('../records/todo_record');
+var Todo = require('../view_models/todo');
 
 var TodoStoreFactory = Store.extend({
   collection: Todos,
 
-  record: TodoRecord
+  viewModel: Todo
 });
 
 var TodoStore = new TodoStoreFactory();

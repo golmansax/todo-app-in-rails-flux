@@ -4,31 +4,31 @@ var Record = require('immutable').Record;
 var BackboneCollectionStore = require('./backbone_collection_store');
 
 var BackboneImmutableCollectionStore = BackboneCollectionStore.extend({
-  record: Record,
+  viewModel: Record,
 
   initialize: function () {
     BackboneCollectionStore.prototype.initialize.call(this);
 
-    this._recordCache = {};
+    this._viewModelCache = {};
   },
 
-  _createRecord: function (model) {
-    var cachedRecord = this._recordCache[model.cid];
-    var record;
+  _createViewModel: function (model) {
+    var cachedViewModel = this._viewModelCache[model.cid];
+    var viewModel;
 
-    if (cachedRecord) {
-      record = cachedRecord.merge(model.attributes);
+    if (cachedViewModel) {
+      viewModel = cachedViewModel.merge(model.attributes);
     } else {
-      record = new this.record(model.attributes);
+      viewModel = new this.viewModel(model.attributes);
     }
 
-    this._recordCache[model.cid] = record;
-    return record;
+    this._viewModelCache[model.cid] = viewModel;
+    return viewModel;
   },
 
   get: function (id) {
     var model = this._storage.get(id);
-    return this._createRecord(model);
+    return this._createViewModel(model);
   },
 
   getAll: function () {
@@ -38,7 +38,7 @@ var BackboneImmutableCollectionStore = BackboneCollectionStore.extend({
       };
     }
 
-    return this._storage.map(this._createRecord.bind(this));
+    return this._storage.map(this._createViewModel.bind(this));
   }
 });
 
