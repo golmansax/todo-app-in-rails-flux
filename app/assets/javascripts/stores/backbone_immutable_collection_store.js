@@ -1,6 +1,7 @@
 'use strict';
 
 var Record = require('immutable').Record;
+var OrderedMap = require('immutable').OrderedMap;
 var BackboneCollectionStore = require('./backbone_collection_store');
 
 var BackboneImmutableCollectionStore = BackboneCollectionStore.extend({
@@ -9,11 +10,11 @@ var BackboneImmutableCollectionStore = BackboneCollectionStore.extend({
   initialize: function () {
     BackboneCollectionStore.prototype.initialize.call(this);
 
-    this._viewModelCache = {};
+    this._viewModels = new OrderedMap();
   },
 
-  _createViewModel: function (model) {
-    var cachedViewModel = this._viewModelCache[model.cid];
+  _cacheViewModel: function (model) {
+    var cachedViewModel = this._viewModels.get(model.cid);
     var viewModel;
 
     if (cachedViewModel) {
@@ -22,23 +23,36 @@ var BackboneImmutableCollectionStore = BackboneCollectionStore.extend({
       viewModel = new this.viewModel(model.attributes);
     }
 
-    this._viewModelCache[model.cid] = viewModel;
+    this._viewModels = this._viewModels.set(model.cid, viewModel);
     return viewModel;
   },
 
   get: function (id) {
     var model = this._storage.get(id);
-    return this._createViewModel(model);
+
+    if (!model) {
+      return null;
+    } else {
+      return this._cacheViewModel(model);
+    }
   },
 
   getAll: function () {
     if (this._fetchingAll) {
-      return {
-        isLoading: true
-      };
+      return this._loadingResponse;
     }
 
-    return this._storage.map(this._createViewModel.bind(this));
+    // First pass is to remove any unused models
+    this._viewModels.keySeq().forEach(function (key) {
+      if (!this._storage.get(key)) {
+        this._viewModels = this._viewModels.remove(key);
+      }
+    }.bind(this));
+
+    // This updates and creates models as necessary
+    this._storage.each(this._cacheViewModel.bind(this));
+
+    return this._viewModels;
   }
 });
 

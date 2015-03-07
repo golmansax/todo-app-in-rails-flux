@@ -5,13 +5,13 @@ var moment = require('moment');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Link = require('react-router').Link;
 var TodoActions = require('../stores/todo_store').Actions;
-var TodoRecord = require('../records/todo_record');
+var Todo = require('../view_models/todo');
 
 var TodoListItem = React.createClass({
   mixins: [PureRenderMixin],
 
   propTypes: {
-    todo: React.PropTypes.instanceOf(TodoRecord)
+    todo: React.PropTypes.instanceOf(Todo)
   },
 
   _onMarkCompleteClick: function (event) {

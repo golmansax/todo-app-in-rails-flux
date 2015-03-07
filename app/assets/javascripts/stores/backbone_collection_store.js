@@ -9,7 +9,7 @@ var BackboneCollectionStore = function () {
 };
 BackboneCollectionStore.extend = Collection.extend;
 
-var EVENTS = 'add remove change reset';
+var EVENTS = 'add remove change reset sync';
 
 function getClonedAttributes(model) {
   return _(model.attributes).clone();
@@ -21,6 +21,10 @@ _(BackboneCollectionStore.prototype).extend({
   model: Model,
 
   _storage: null,
+
+  _loadingResponse: {
+    isLoading: true
+  },
 
   initialize: function () {
     // Prefer using this.collection over this.model
@@ -39,9 +43,7 @@ _(BackboneCollectionStore.prototype).extend({
 
   getAll: function () {
     if (this._fetchingAll) {
-      return {
-        isLoading: true
-      };
+      return this._loadingResponse;
     }
 
     return this._storage.map(getClonedAttributes);
@@ -91,11 +93,9 @@ _(BackboneCollectionStore.prototype).extend({
     fetchAll: function () {
       this._fetchingAll = true;
       this._storage.fetch({
-        parse: true,
         silent: true,
         success: function () {
           this._fetchingAll = false;
-          this._triggerChange();
         }.bind(this)
       });
     },
@@ -108,10 +108,6 @@ _(BackboneCollectionStore.prototype).extend({
 
   _bindAction: function (action, name) {
     this.Actions[name] = action.bind(this);
-  },
-
-  _triggerChange: function () {
-    this._storage.trigger('change');
   }
 });
 
