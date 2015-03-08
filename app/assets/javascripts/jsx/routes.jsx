@@ -4,9 +4,9 @@
 var React = require('react');
 var Route = require('react-router').Route;
 var DefaultRoute = require('react-router').DefaultRoute;
-var RootView = require('./jsx/root_view');
-var TodoApp = require('./jsx/todo_app');
-var TodoRoute = require('./jsx/todo_route');
+var RootView = require('./root_view');
+var TodoApp = require('./todo_app');
+var TodoRoute = require('./todo_route');
 
 var routes = (
   <Route handler={RootView} path='/'>

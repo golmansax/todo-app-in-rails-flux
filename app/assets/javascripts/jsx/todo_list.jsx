@@ -3,28 +3,40 @@
 var React = require('react');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Iterable = require('immutable').Iterable;
+var BindToStoreMixin = require('../mixins/bind_to_store_mixin');
+var TodoStore = require('../stores/todo_store');
 var TodoListItem = require('./todo_list_item');
-var NewTodoListItem = require('./new_todo_list_item');
 
 var TodoList = React.createClass({
-  mixins: [PureRenderMixin],
+  mixins: [PureRenderMixin, BindToStoreMixin(TodoStore, 'getStateFromStore')],
 
-  propTypes: {
-    todos: React.PropTypes.instanceOf(Iterable).isRequired
+  componentWillMount: function () {
+    TodoStore.Actions.fetchAll();
+    this.setState(this.getStateFromStore());
+  },
+
+  getStateFromStore: function () {
+    return {
+      todos: TodoStore.getAll()
+    };
   },
 
   _renderTodo: function (todo, index) {
     if (!todo.id) {
-      return <NewTodoListItem todo={todo} key={index} />;
+      return <div className='list-group-item'>Loading...</div>
     } else {
       return <TodoListItem todo={todo} key={todo.id} />;
     }
   },
 
   render: function () {
+    if (this.state.todos.isLoading) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div className='list-group'>
-        {this.props.todos.map(this._renderTodo).toJS()}
+        {this.state.todos.map(this._renderTodo).toJS()}
       </div>
     );
   }
