@@ -9,9 +9,14 @@ var React = require('react');
 var Router = require('react-router');
 var routes = require('./jsx/routes');
 
-var containerEl = window.document.getElementById('react-container');
-if (containerEl) {
-  Router.run(routes, Router.HistoryLocation, function (Handler, state) {
-    React.render(<Handler {...state.params} />, containerEl);
-  });
-}
+function bootApplication() {
+  var containerEl = window.document.getElementById('react-container');
+  if (containerEl) {
+    Router.run(routes, Router.HistoryLocation, function (Handler, state) {
+      React.render(<Handler {...state.params} />, containerEl);
+    });
+  }
+};
+
+bootApplication();
+module.exports = bootApplication;

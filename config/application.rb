@@ -31,5 +31,7 @@ module TodoApp
 
     browserify_options = '-t reactify --extension=".jsx" -t babelify'
     config.browserify_rails.commandline_options = browserify_options
+
+    config.browserify_rails.paths << /spec\/javascripts/
   end
 end

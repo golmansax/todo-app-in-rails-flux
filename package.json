@@ -21,6 +21,7 @@
     "underscore": "latest"
   },
   "devDependencies": {
+    "chai": "latest",
     "esprima-fb": "12001.1.0-dev-harmony-fb",
     "istanbul": "0.3.2",
     "jsxhint": "0.9.0",

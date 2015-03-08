@@ -19,6 +19,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'scss-lint'
   gem 'sqlite3'
+  gem 'teaspoon'
   gem 'travis', require: false
   gem 'web-console', '~> 2.0'
 end

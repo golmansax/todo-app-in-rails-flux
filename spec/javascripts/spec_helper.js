@@ -1,14 +1,5 @@
-// Code to be tested
-//= require application
-//
-// Test helpers
-//= require support/chai
-//= require support/sinon
-//= require support/sinon-chai
-//= require dirty-chai
+'use strict';
 
-(function () {
-  'use strict';
-
-  window.expect = window.chai.expect;
-})();
+// Expose expect it will be easier to write specs
+var chai = require('chai');
+window.expect = chai.expect;

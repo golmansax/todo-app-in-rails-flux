@@ -16,6 +16,7 @@ script:
 - bundle exec rake jscs
 - bundle exec rake jshint
 - bundle exec rspec
+- bundle exec teaspoon
 deploy:
   provider: heroku
   api_key:
