@@ -5,7 +5,7 @@ var TodoList = require('./todo_list');
 var TodoOptionsMenu = require('./todo_options_menu');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
-var TodoApp = React.createClass({
+var TodosView = React.createClass({
   mixins: [PureRenderMixin],
 
   render: function () {
@@ -19,4 +19,4 @@ var TodoApp = React.createClass({
   }
 });
 
-module.exports = TodoApp;
+module.exports = TodosView;

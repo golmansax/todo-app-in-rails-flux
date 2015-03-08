@@ -3,8 +3,8 @@
 var React = require('react');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Modal = require('react-bootstrap').Modal;
-var TodoActions = require('../stores/todo_store').Actions;
-var TodoModel = require('../models/todo_model');
+var TodoActions = require('../../stores/todo_store').Actions;
+var TodoModel = require('../../models/todo_model');
 
 var NewTodoModal = React.createClass({
   mixins: [PureRenderMixin],

@@ -2,7 +2,7 @@
 
 var React = require('react');
 var moment = require('moment');
-var TodoActions = require('../stores/todo_store').Actions;
+var TodoActions = require('../../stores/todo_store').Actions;
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var ModalTrigger = require('react-bootstrap').ModalTrigger;
 var NewTodoModal = require('./new_todo_modal');

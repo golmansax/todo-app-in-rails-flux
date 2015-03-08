@@ -3,8 +3,8 @@
 var React = require('react');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Iterable = require('immutable').Iterable;
-var BindToStoreMixin = require('../mixins/bind_to_store_mixin');
-var TodoStore = require('../stores/todo_store');
+var BindToStoreMixin = require('../../mixins/bind_to_store_mixin');
+var TodoStore = require('../../stores/todo_store');
 var TodoListItem = require('./todo_list_item');
 
 var TodoList = React.createClass({
