@@ -4,13 +4,32 @@ var React = require('react');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Modal = require('react-bootstrap').Modal;
 var TodoActions = require('../stores/todo_store').Actions;
+var Model = require('backbone').Model;
 
 var NewTodoModal = React.createClass({
   mixins: [PureRenderMixin],
 
   _handleCreate: function () {
     TodoActions.createAndSave(this._todo.attributes);
+    console.log(this._todo.attributes);
     this.props.onRequestHide();
+  },
+
+  componentWillMount: function () {
+    this._todo = new Model();
+    this._todo.on('change', this._forceUpdate);
+  },
+
+  _forceUpdate: function () {
+    this.forceUpdate();
+  },
+
+  componentWillUnmount: function () {
+    this._todo.off('change', this._forceUpdate);
+  },
+
+  _handleTodoUpdate: function (attr, event) {
+    this._todo.set(attr, event.target.value);
   },
 
   render: function() {
@@ -27,6 +46,8 @@ var NewTodoModal = React.createClass({
             <input
               id='new-todo-name'
               className='form-control'
+              value={this._todo.get('name')}
+              onChange={this._handleTodoUpdate.bind(this, 'name')}
             />
           </div>
           <div className='form-group'>
@@ -34,6 +55,8 @@ var NewTodoModal = React.createClass({
             <input
               id='new-todo-due-date'
               className='form-control'
+              value={this._todo.get('dueDate')}
+              onChange={this._handleTodoUpdate.bind(this, 'dueDate')}
             />
           </div>
         </div>

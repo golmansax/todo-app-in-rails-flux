@@ -43,6 +43,6 @@ class TodosController < ApplicationController
 private
 
   def todo_params
-    params.slice(:name, :completed_date).permit!
+    params.slice(:name, :due_date, :completed_date).permit!
   end
 end

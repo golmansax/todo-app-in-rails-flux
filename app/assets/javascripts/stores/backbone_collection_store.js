@@ -86,7 +86,7 @@ _(BackboneCollectionStore.prototype).extend({
     },
 
     createAndSave: function (data) {
-      this._storage.create(model);
+      this._storage.create(data);
     },
 
     load: function (models) {
