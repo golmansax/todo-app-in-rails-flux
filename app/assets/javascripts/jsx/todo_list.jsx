@@ -1,9 +1,10 @@
 'use strict';
 
 var React = require('react');
-var TodoListItem = require('./todo_list_item');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Iterable = require('immutable').Iterable;
+var TodoListItem = require('./todo_list_item');
+var NewTodoListItem = require('./new_todo_list_item');
 
 var TodoList = React.createClass({
   mixins: [PureRenderMixin],
@@ -12,8 +13,12 @@ var TodoList = React.createClass({
     todos: React.PropTypes.instanceOf(Iterable).isRequired
   },
 
-  _renderTodo: function (todo) {
-    return <TodoListItem todo={todo} key={todo.id} />;
+  _renderTodo: function (todo, index) {
+    if (!todo.id) {
+      return <NewTodoListItem todo={todo} key={index} />;
+    } else {
+      return <TodoListItem todo={todo} key={todo.id} />;
+    }
   },
 
   render: function () {

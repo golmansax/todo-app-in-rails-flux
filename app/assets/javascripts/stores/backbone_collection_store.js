@@ -31,12 +31,12 @@ _(BackboneCollectionStore.prototype).extend({
     var Collection;
     if (this.collection) {
       Collection = this.collection;
-      this.model = this.collection.model;
     } else {
       Collection = Collection.extend({ model: this.model });
     }
 
     this._storage = new Collection();
+    this.model = this._storage.model;
 
     _(this.Actions).each(this._bindAction.bind(this));
   },
@@ -76,13 +76,9 @@ _(BackboneCollectionStore.prototype).extend({
     },
 
     create: function (data) {
+      console.log(this);
+      console.log(this.model);
       var model = new this.model(data);
-      var idAttr = model.idAttr || 'id';
-
-      if (!model.get(idAttr)) {
-        model.set(idAttr, model.cid);
-      }
-
       this._storage.add(model);
     },
 

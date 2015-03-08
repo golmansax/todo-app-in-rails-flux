@@ -14,7 +14,7 @@ var TodoListItem = React.createClass({
     todo: React.PropTypes.instanceOf(Todo)
   },
 
-  _onMarkCompleteClick: function (event) {
+  _handleMarkComplete: function (event) {
     event.preventDefault();
     TodoActions.update(this.props.todo.id, {
       completedDate: moment().format('YYYY-MM-DD')
@@ -22,15 +22,27 @@ var TodoListItem = React.createClass({
     TodoActions.save(this.props.todo.id);
   },
 
-  _onMarkIncompleteClick: function (event) {
+  _handleMarkIncomplete: function (event) {
     event.preventDefault();
     TodoActions.update(this.props.todo.id, { completedDate: null });
     TodoActions.save(this.props.todo.id);
   },
 
-  _onDestroyClick: function (event) {
+  _handleDestroy: function (event) {
     event.preventDefault();
     TodoActions.destroy(this.props.todo.id);
+  },
+
+  _handleNameChange: function (event) {
+    TodoActions.update(this.props.todo.id, { name: event.target.value });
+  },
+
+  _handleSave: function (event) {
+    TodoActions.save(this.props.todo.id);
+  },
+
+  _preventDefault: function (event) {
+    event.preventDefault();
   },
 
   _renderDate: function () {
@@ -62,7 +74,7 @@ var TodoListItem = React.createClass({
       return (
         <button
           className='btn btn-lg btn-default btn-block'
-          onClick={this._onMarkIncompleteClick}
+          onClick={this._handleMarkIncomplete}
         >
           Not Done Yet
         </button>
@@ -71,7 +83,7 @@ var TodoListItem = React.createClass({
       return (
         <button
           className='btn btn-lg btn-primary btn-block'
-          onClick={this._onMarkCompleteClick}
+          onClick={this._handleMarkComplete}
         >
           Mark Done
         </button>
@@ -88,14 +100,26 @@ var TodoListItem = React.createClass({
       >
         <div className='row'>
           <div className='col-md-9'>
-            <h3 className='todo-list-item-name'>{this.props.todo.name}</h3>
+            <div className='form-group'>
+              <label for={'name-input-' + this.props.todo.id}>
+                Task
+              </label>
+              <input
+                id={'name-input-' + this.props.todo.id}
+                className='form-control'
+                value={this.props.todo.name}
+                onClick={this._preventDefault}
+                onChange={this._handleNameChange}
+                onBlur={this._handleSave}
+              />
+            </div>
             {this._renderDate()}
           </div>
           <div className='col-md-3'>
             {this._renderActionButton()}
             <button
               className='btn btn-lg btn-default btn-block'
-              onClick={this._onDestroyClick}
+              onClick={this._handleDestroy}
             >
               Remove
             </button>
