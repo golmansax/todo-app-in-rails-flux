@@ -4,6 +4,8 @@ var React = require('react');
 var moment = require('moment');
 var TodoActions = require('../stores/todo_store').Actions;
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
+var ModalTrigger = require('react-bootstrap').ModalTrigger;
+var NewTodoModal = require('./new_todo_modal');
 
 var TodoOptionsMenu = React.createClass({
   mixins: [PureRenderMixin],
@@ -29,12 +31,11 @@ var TodoOptionsMenu = React.createClass({
           </div>
         </h4>
         <div className='col-md-3'>
-          <button
-            className='btn btn-block btn-lg btn-primary'
-            onClick={this._onAddClick}
-          >
-            Add Todo
-          </button>
+          <ModalTrigger modal={<NewTodoModal />}>
+            <button className='btn btn-block btn-lg btn-primary'>
+              Add Todo
+            </button>
+          </ModalTrigger>
         </div>
       </div>
     );

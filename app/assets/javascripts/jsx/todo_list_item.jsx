@@ -101,7 +101,7 @@ var TodoListItem = React.createClass({
         <div className='row'>
           <div className='col-md-9'>
             <div className='form-group'>
-              <label for={'name-input-' + this.props.todo.id}>
+              <label htmlFor={'name-input-' + this.props.todo.id}>
                 Task
               </label>
               <input

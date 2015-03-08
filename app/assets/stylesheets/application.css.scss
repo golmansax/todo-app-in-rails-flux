@@ -12,3 +12,8 @@ h5,
 h6 {
   font-family: $font-family-headers;
 }
+
+// Bootstrap polyfill
+.modal-backdrop {
+  height: 100%;
+}

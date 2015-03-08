@@ -14,6 +14,7 @@
     "immutable": "latest",
     "moment": "latest",
     "react": "~> 0.12",
+    "react-bootstrap": "latest",
     "react-router": "latest",
     "reactify": "latest",
     "snakeize": "latest",
