@@ -7,7 +7,7 @@ require('./support/backbone_sync_overrides');
 
 var React = require('react');
 var Router = require('react-router');
-var routes = require('./routes');
+var routes = require('./jsx/routes');
 
 var containerEl = window.document.getElementById('react-container');
 if (containerEl) {
