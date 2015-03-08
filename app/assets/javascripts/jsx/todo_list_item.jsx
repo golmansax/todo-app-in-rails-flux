@@ -5,7 +5,7 @@ var moment = require('moment');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Link = require('react-router').Link;
 var TodoActions = require('../stores/todo_store').Actions;
-var TodoViewModel = require('../view_models/todo_view_model');
+var TodoViewModel = require('../models/todo_view_model');
 
 var TodoListItem = React.createClass({
   mixins: [PureRenderMixin],
