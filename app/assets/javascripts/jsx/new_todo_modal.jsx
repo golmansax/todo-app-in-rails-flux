@@ -11,7 +11,6 @@ var NewTodoModal = React.createClass({
 
   _handleCreate: function () {
     TodoActions.createAndSave(this._todo.attributes);
-    console.log(this._todo.attributes);
     this.props.onRequestHide();
   },
 
@@ -32,7 +31,7 @@ var NewTodoModal = React.createClass({
     this._todo.set(attr, event.target.value);
   },
 
-  render: function() {
+  render: function () {
     return (
       <Modal
         {...this.props}

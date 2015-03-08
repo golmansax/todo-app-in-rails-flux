@@ -37,7 +37,6 @@ Backbone.sync = function (method, model, options) {
     }
   };
 
-  console.log(method, model);
   if (model && isSendingAttrs(method)) {
     var attrs = options.attrs || model.toJSON(options);
     options.attrs = snakeize(attrs);

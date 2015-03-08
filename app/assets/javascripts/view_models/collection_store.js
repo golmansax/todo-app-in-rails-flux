@@ -42,6 +42,7 @@ _(CollectionStore.prototype).extend({
   },
 
   _add: function (model) {
+    var id = 'fake';
     this._models.set(id, model);
     this._viewModels.set(id, model.toViewModel());
     this._changeListeners[id] = this._updateViewModel.bind(this, id);
@@ -74,7 +75,7 @@ _(CollectionStore.prototype).extend({
   }
 });
 
-var Actions: {
+CollectionStore.Actions = {
   update: function (id, data) {
     this.get(id).set(data);
   },

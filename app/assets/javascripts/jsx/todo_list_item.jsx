@@ -35,7 +35,7 @@ var TodoListItem = React.createClass({
     TodoActions.update(this.props.todo.id, { name: event.target.value });
   },
 
-  _handleSave: function (event) {
+  _handleSave: function () {
     TodoActions.save(this.props.todo.id);
   },
 

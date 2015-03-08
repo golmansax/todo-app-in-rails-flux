@@ -1,6 +1,5 @@
 'use strict';
 
-var Record = require('immutable').Record;
 var _ = require('underscore');
 var EventEmitter = require('events').EventEmitter;
 
@@ -14,7 +13,7 @@ _(Model.prototype).extend(EventEmitter.prototype);
 _(Model.prototype).extend({
   defaults: {},
 
-  initialize: function (attrs) {
+  initialize: function () {
     this._record = new this.Record(this.defaults);
   },
 
