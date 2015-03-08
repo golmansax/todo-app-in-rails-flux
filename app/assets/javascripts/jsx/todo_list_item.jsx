@@ -5,32 +5,30 @@ var moment = require('moment');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Link = require('react-router').Link;
 var TodoActions = require('../stores/todo_store').Actions;
-var Todo = require('../view_models/todo');
+var TodoViewModel = require('../view_models/todo_view_model');
 
 var TodoListItem = React.createClass({
   mixins: [PureRenderMixin],
 
   propTypes: {
-    todo: React.PropTypes.instanceOf(Todo)
+    todo: React.PropTypes.instanceOf(TodoViewModel)
   },
 
   _handleMarkComplete: function (event) {
     event.preventDefault();
-    TodoActions.update(this.props.todo.id, {
+    TodoActions.updateAndSave(this.props.todo.id, {
       completedDate: moment().format('YYYY-MM-DD')
     });
-    TodoActions.save(this.props.todo.id);
   },
 
   _handleMarkIncomplete: function (event) {
     event.preventDefault();
-    TodoActions.update(this.props.todo.id, { completedDate: null });
-    TodoActions.save(this.props.todo.id);
+    TodoActions.updateAndSave(this.props.todo.id, { completedDate: null });
   },
 
   _handleDestroy: function (event) {
     event.preventDefault();
-    TodoActions.destroy(this.props.todo.id);
+    TodoActions.destroyAndSave(this.props.todo.id);
   },
 
   _handleNameChange: function (event) {

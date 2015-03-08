@@ -67,19 +67,26 @@ _(BackboneCollectionStore.prototype).extend({
       this._storage.get(id).set(data);
     },
 
-    remove: function (id) {
-      this._storage.remove(id);
+    updateAndSave: function (id, data) {
+      this.update(id, data);
+      this.save(id);
     },
 
     destroy: function (id) {
+      this._storage.remove(id);
+    },
+
+    destroyAndSave: function (id) {
       this._storage.get(id).destroy();
     },
 
     create: function (data) {
-      console.log(this);
-      console.log(this.model);
       var model = new this.model(data);
       this._storage.add(model);
+    },
+
+    createAndSave: function (data) {
+      this._storage.create(model);
     },
 
     load: function (models) {
