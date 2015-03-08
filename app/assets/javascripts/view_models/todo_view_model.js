@@ -2,11 +2,11 @@
 
 var Record = require('immutable').Record;
 
-var Todo = Record({
+var TodoViewModel = Record({
   id: null,
   name: '',
   completedDate: null,
   dueDate: null
 });
 
-module.exports = Todo;
+module.exports = TodoViewModel;

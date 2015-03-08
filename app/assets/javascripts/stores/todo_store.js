@@ -1,13 +1,13 @@
 'use strict';
 
 var Store = require('./backbone_immutable_collection_store');
-var Todos = require('../backbone/todos');
-var Todo = require('../view_models/todo');
+var TodoCollection = require('../backbone/todo_collection');
+var TodoViewModel = require('../view_models/todo_view_model');
 
 var TodoStoreFactory = Store.extend({
-  collection: Todos,
+  collection: TodoCollection,
 
-  viewModel: Todo
+  viewModel: TodoViewModel
 });
 
 var TodoStore = new TodoStoreFactory();

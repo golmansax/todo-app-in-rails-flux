@@ -28,14 +28,14 @@ _(BackboneCollectionStore.prototype).extend({
 
   initialize: function () {
     // Prefer using this.collection over this.model
-    var Collection;
+    var CollectionClass;
     if (this.collection) {
-      Collection = this.collection;
+      CollectionClass = this.collection;
     } else {
-      Collection = Collection.extend({ model: this.model });
+      CollectionClass = Collection.extend({ model: this.model });
     }
 
-    this._storage = new Collection();
+    this._storage = new CollectionClass();
     this.model = this._storage.model;
 
     _(this.Actions).each(this._bindAction.bind(this));
