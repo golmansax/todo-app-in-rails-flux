@@ -4,7 +4,7 @@ var React = require('react');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Modal = require('react-bootstrap').Modal;
 var TodoActions = require('../stores/todo_store').Actions;
-var Model = require('backbone').Model;
+var TodoModel = require('../backbone/todo_model');
 
 var NewTodoModal = React.createClass({
   mixins: [PureRenderMixin],
@@ -15,7 +15,7 @@ var NewTodoModal = React.createClass({
   },
 
   componentWillMount: function () {
-    this._todo = new Model();
+    this._todo = new TodoModel();
     this._todo.on('change', this._forceUpdate);
   },
 
@@ -31,6 +31,16 @@ var NewTodoModal = React.createClass({
     this._todo.set(attr, event.target.value);
   },
 
+  _renderError: function () {
+    if (this._todo.isValid()) {
+      return;
+    }
+
+    return (
+      <div className='alert alert-danger'>{this._todo.validationError}</div>
+    );
+  },
+
   render: function () {
     return (
       <Modal
@@ -40,6 +50,7 @@ var NewTodoModal = React.createClass({
         animation={false}
         >
         <div className='modal-body'>
+          {this._renderError()}
           <div className='form-group'>
             <label htmlFor='new-todo-name'>Name</label>
             <input
@@ -69,6 +80,7 @@ var NewTodoModal = React.createClass({
           <button
             className='btn btn-primary'
             onClick={this._handleCreate}
+            disabled={!this._todo.isValid()}
             >
             Create
           </button>
