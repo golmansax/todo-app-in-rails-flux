@@ -86,6 +86,7 @@
   // Custom Globals
   //   NOTE: Let's explicitly list out the globals we use
   "globals"       : {
+    "Promise"     : true,
     "module"      : true,
     "require"     : true,
     "window"      : true

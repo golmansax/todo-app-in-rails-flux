@@ -16,7 +16,7 @@ function bootApplication() {
       React.render(<Handler {...state.params} />, containerEl);
     });
   }
-};
+}
 
 bootApplication();
 module.exports = bootApplication;

@@ -65,7 +65,7 @@ assign(AlertStoreFactory.prototype, EventEmitter.prototype, {
 
       assign(this._storage, {
         isShowing: true,
-        message: message,
+        message: message
       });
       this._triggerChange();
 
