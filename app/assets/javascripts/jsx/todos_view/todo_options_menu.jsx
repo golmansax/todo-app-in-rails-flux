@@ -11,10 +11,6 @@ var AlertActions = require('../../stores/alert_store').Actions;
 var TodoOptionsMenu = React.createClass({
   mixins: [PureRenderMixin],
 
-  _onChange: function () {
-    AlertActions.alert('Todo created!');
-  },
-
   render: function () {
     return (
       <div className='row'>
@@ -23,7 +19,6 @@ var TodoOptionsMenu = React.createClass({
             <label>
               <input
                 type='checkbox'
-                onChange={this._onChange}
                 defaultChecked={true}
               />
               Show Completed

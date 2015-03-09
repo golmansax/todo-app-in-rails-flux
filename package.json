@@ -5,12 +5,12 @@
     "node": "0.10.x"
   },
   "dependencies": {
-    "babelify": "latest",
     "backbone": "latest",
     "backbone.nativeajax": "latest",
     "browserify": "~> 6.3",
     "browserify-incremental": "^1.4.0",
     "es5-shim": "latest",
+    "es6-promise": "latest",
     "immutable": "latest",
     "object-assign": "latest",
     "moment": "latest",

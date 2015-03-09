@@ -5,6 +5,7 @@ var moment = require('moment');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Link = require('react-router').Link;
 var TodoActions = require('../../stores/todo_store').Actions;
+var AlertActions = require('../../stores/alert_store').Actions;
 var TodoViewModel = require('../../models/todo_view_model');
 
 var TodoListItem = React.createClass({
@@ -26,9 +27,19 @@ var TodoListItem = React.createClass({
     TodoActions.updateAndSave(this.props.todo.id, { completedDate: null });
   },
 
-  _handleDestroy: function (event) {
+  _handleDestroyTry: function (event) {
     event.preventDefault();
+    var message = 'Are you sure you want to remove Todo \'' +
+      this.props.todo.name +
+      '\'?';
+
+    AlertActions.confirm(message).then(this._destroyTodo);
+  },
+
+  _destroyTodo: function () {
     TodoActions.destroyAndSave(this.props.todo.id);
+    var message = 'Todo \'' + this.props.todo.name + '\' has been removed';
+    AlertActions.alert(message);
   },
 
   _handleNameChange: function (event) {
@@ -117,7 +128,7 @@ var TodoListItem = React.createClass({
             {this._renderActionButton()}
             <button
               className='btn btn-lg btn-default btn-block'
-              onClick={this._handleDestroy}
+              onClick={this._handleDestroyTry}
             >
               Remove
             </button>

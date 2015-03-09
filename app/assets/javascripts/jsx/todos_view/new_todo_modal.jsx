@@ -5,13 +5,15 @@ var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Modal = require('react-bootstrap').Modal;
 var TodoActions = require('../../stores/todo_store').Actions;
 var TodoModel = require('../../models/todo_model');
+var AlertActions = require('../../stores/alert_store').Actions;
 
 var NewTodoModal = React.createClass({
   mixins: [PureRenderMixin],
 
   _handleCreate: function () {
-    TodoActions.createAndSave(this._todo.attributes);
+    TodoActions.createAndSave(this._todo.toJSON());
     this.props.onRequestHide();
+    AlertActions.alert('Todo for \'' + this._todo.get('name') + '\' created!');
   },
 
   componentWillMount: function () {

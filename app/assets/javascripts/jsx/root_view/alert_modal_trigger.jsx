@@ -18,16 +18,49 @@ var AlertModalTrigger = React.createClass({
   getStateFromStore: function () {
     return {
       isShowing: AlertStore.isShowing(),
+      hasCancelButton: AlertStore.hasCancelButton(),
       message: AlertStore.getMessage()
     };
   },
 
-  _handleHide: function () {
+  _handleOK: function () {
+    AlertActions.resolvePromise();
+    AlertActions.hide();
+  },
+
+  _handleCancel: function () {
+    AlertActions.rejectPromise();
     AlertActions.hide();
   },
 
   render: function () {
     return null;
+  },
+
+  _renderCancelButton: function () {
+    if (!this.state.hasCancelButton) {
+      return null;
+    }
+
+    return (
+      <button className='btn btn-default' onClick={this._handleCancel}>
+        Cancel
+      </button>
+    );
+  },
+
+  _renderFooter: function () {
+    return (
+      <div className='modal-footer'>
+        {this._renderCancelButton()}
+        <button
+          className='btn btn-primary'
+          onClick={this._handleOK}
+          >
+          OK
+        </button>
+      </div>
+    );
   },
 
   renderOverlay: function () {
@@ -40,20 +73,11 @@ var AlertModalTrigger = React.createClass({
         bsStyle='primary'
         title='Alert'
         animation={false}
-        onRequestHide={this._handleHide}
+        onRequestHide={this._handleCancel}
         {...this.props}
         >
-        <div className='modal-body'>
-          {this.state.message}
-        </div>
-        <div className='modal-footer'>
-          <button
-            className='btn btn-default'
-            onClick={this._handleHide}
-            >
-            Got it
-          </button>
-        </div>
+        <div className='modal-body'>{this.state.message}</div>
+        {this._renderFooter()}
       </Modal>
     );
   }

@@ -3,6 +3,7 @@
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var _ = require('underscore');
+var Promise = require('es6-promise').Promise;
 
 var CHANGE_EVENT = 'change';
 
@@ -12,11 +13,18 @@ var AlertStoreFactory = function () {
 
 assign(AlertStoreFactory.prototype, EventEmitter.prototype, {
   initialize: function () {
-    this._storage = {
-      isShowing: false
-    };
-
+    this._resetStorage();
     _(this.Actions).each(this._bindAction.bind(this));
+  },
+
+  _resetStorage: function () {
+    this._storage = {
+      isShowing: false,
+      hasCancelButton: false,
+      message: '',
+      resolvePromise: null,
+      rejectPromise: null
+    };
   },
 
   addChangeListener: function (callback) {
@@ -31,6 +39,10 @@ assign(AlertStoreFactory.prototype, EventEmitter.prototype, {
     return this._storage.isShowing;
   },
 
+  hasCancelButton: function () {
+    return this._storage.hasCancelButton;
+  },
+
   getMessage: function () {
     return this._storage.message;
   },
@@ -43,16 +55,47 @@ assign(AlertStoreFactory.prototype, EventEmitter.prototype, {
     this.emit(CHANGE_EVENT);
   },
 
+  _storePromiseHandlers: function (resolve, reject) {
+    assign(this._storage, { resolvePromise: resolve, rejectPromise: reject });
+  },
+
   Actions: {
     alert: function (message) {
-      this._storage.isShowing = true;
-      this._storage.message = message;
+      var promise = new Promise(this._storePromiseHandlers.bind(this));
+
+      assign(this._storage, {
+        isShowing: true,
+        message: message,
+      });
       this._triggerChange();
+
+      return promise;
+    },
+
+    confirm: function (message) {
+      var promise = new Promise(this._storePromiseHandlers.bind(this));
+
+      assign(this._storage, {
+        isShowing: true,
+        message: message,
+        hasCancelButton: true
+      });
+      this._triggerChange();
+
+      return promise;
     },
 
     hide: function () {
-      this._storage.isShowing = false;
+      this._resetStorage();
       this._triggerChange();
+    },
+
+    resolvePromise: function () {
+      this._storage.resolvePromise();
+    },
+
+    rejectPromise: function () {
+      this._storage.rejectPromise();
     }
   }
 });
