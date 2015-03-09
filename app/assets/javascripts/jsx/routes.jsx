@@ -4,7 +4,7 @@
 var React = require('react');
 var Route = require('react-router').Route;
 var DefaultRoute = require('react-router').DefaultRoute;
-var RootView = require('./root_view');
+var RootView = require('./root_view/root_view');
 var TodosView = require('./todos_view/todos_view');
 var TodoView = require('./todo_view');
 

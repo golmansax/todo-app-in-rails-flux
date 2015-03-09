@@ -6,13 +6,13 @@ var TodoActions = require('../../stores/todo_store').Actions;
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var ModalTrigger = require('react-bootstrap').ModalTrigger;
 var NewTodoModal = require('./new_todo_modal');
+var AlertActions = require('../../stores/alert_store').Actions;
 
 var TodoOptionsMenu = React.createClass({
   mixins: [PureRenderMixin],
 
-  _onAddClick: function () {
-    TodoActions.create({ name: 'Eat Groceries', dueDate: moment() });
-    window.alert('Todo created!');
+  _onChange: function () {
+    AlertActions.alert('Todo created!');
   },
 
   render: function () {
