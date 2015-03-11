@@ -4,7 +4,7 @@ var React = require('react');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var OverlayMixin = require('react-bootstrap').OverlayMixin;
 var Modal = require('react-bootstrap').Modal;
-var BindToStoreMixin = require('../../mixins/bind_to_store_mixin');
+var BindMixin = require('react-bind-mixin');
 var AlertStore = require('../../stores/alert_store');
 var AlertActions = require('../../stores/alert_store').Actions;
 
@@ -12,7 +12,7 @@ var AlertModalTrigger = React.createClass({
   mixins: [
     OverlayMixin,
     PureRenderMixin,
-    BindToStoreMixin(AlertStore, 'getStateFromStore')
+    BindMixin(AlertStore, 'getStateFromStore')
   ],
 
   getStateFromStore: function () {

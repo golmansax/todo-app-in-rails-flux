@@ -2,11 +2,11 @@
 
 var React = require('react');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
+var BindMixin = require('react-bind-mixin');
 var TodoStore = require('../stores/todo_store');
-var BindToStoreMixin = require('../mixins/bind_to_store_mixin');
 
 var TodoView = React.createClass({
-  mixins: [PureRenderMixin, BindToStoreMixin(TodoStore, 'getStateFromStore')],
+  mixins: [PureRenderMixin, BindMixin(TodoStore, 'getStateFromStore')],
 
   getStateFromStore: function () {
     return {

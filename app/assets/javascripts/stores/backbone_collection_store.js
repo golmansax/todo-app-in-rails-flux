@@ -68,8 +68,9 @@ _(BackboneCollectionStore.prototype).extend({
     },
 
     updateAndSave: function (id, data) {
-      this.update(id, data);
-      this.save(id);
+      var model = this._storage.get(id);
+      model.set(data);
+      model.save();
     },
 
     destroy: function (id) {

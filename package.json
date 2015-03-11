@@ -15,6 +15,7 @@
     "object-assign": "latest",
     "moment": "latest",
     "react": "~> 0.12",
+    "react-bind-mixin": "latest",
     "react-bootstrap": "latest",
     "react-router": "latest",
     "reactify": "latest",
