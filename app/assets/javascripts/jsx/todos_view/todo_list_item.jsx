@@ -4,7 +4,7 @@ var React = require('react');
 var moment = require('moment');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var Link = require('react-router').Link;
-var TodoActions = require('../../stores/todo_store').Actions;
+var TodoActions = require('../../actions/todo_actions');
 var AlertActions = require('../../stores/alert_store').Actions;
 var TodoViewModel = require('../../models/todo_view_model');
 

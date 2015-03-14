@@ -1,12 +1,11 @@
 'use strict';
 
-var Store = require('./backbone_immutable_collection_store');
+var CrudStore = require('flux-crud-store').Store;
 var TodoCollection = require('../models/todo_collection');
 var TodoViewModel = require('../models/todo_view_model');
 
-var TodoStoreFactory = Store.extend({
+var TodoStoreFactory = CrudStore.extend({
   collection: TodoCollection,
-
   viewModel: TodoViewModel
 });
 

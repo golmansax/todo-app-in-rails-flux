@@ -4,13 +4,14 @@ var React = require('react');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var BindMixin = require('react-bind-mixin');
 var TodoStore = require('../../stores/todo_store');
+var TodoActions = require('../../actions/todo_actions');
 var TodoListItem = require('./todo_list_item');
 
 var TodoList = React.createClass({
   mixins: [PureRenderMixin, BindMixin(TodoStore, 'getStateFromStore')],
 
   componentWillMount: function () {
-    TodoStore.Actions.fetchAll();
+    TodoActions.fetchAll();
     this.setState(this.getStateFromStore());
   },
 

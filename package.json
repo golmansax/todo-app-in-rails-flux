@@ -11,6 +11,7 @@
     "browserify-incremental": "^1.4.0",
     "es5-shim": "latest",
     "es6-promise": "latest",
+    "flux-crud-store": "latest",
     "immutable": "latest",
     "object-assign": "latest",
     "moment": "latest",
