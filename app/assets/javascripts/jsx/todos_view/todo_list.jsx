@@ -36,7 +36,7 @@ var TodoList = React.createClass({
 
     return (
       <div className='list-group'>
-        {this.state.todos.map(this._renderTodo).toJS()}
+        {this.state.todos.valueSeq().map(this._renderTodo).toJS()}
       </div>
     );
   }

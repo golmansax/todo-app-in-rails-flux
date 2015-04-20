@@ -5,6 +5,7 @@
     "node": "0.10.x"
   },
   "dependencies": {
+    "babelify": "latest",
     "backbone": "latest",
     "backbone.nativeajax": "latest",
     "browserify": "~> 6.3",
@@ -15,7 +16,7 @@
     "immutable": "latest",
     "object-assign": "latest",
     "moment": "latest",
-    "react": "~> 0.12",
+    "react": "~> 0.13",
     "react-bind-mixin": "latest",
     "react-bootstrap": "latest",
     "react-router": "latest",
