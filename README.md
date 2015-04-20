@@ -5,6 +5,16 @@ Todo App
 
 A simple Todo app built with Rails and React.
 
-TODO:
-* create backend models
-* test coverage
+Uses the following libraries:
+- [React Router](https://github.com/rackt/react-router)
+- [Flux CRUD Store](https://github.com/golmansax/flux-crud-store)
+- [React Bind Mixin](https://github.com/golmansax/react-bind-mixin)
+
+
+To Boot Locally
+===
+```bash
+bundle
+npm install
+rails server
+```
